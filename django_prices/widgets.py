@@ -22,6 +22,7 @@ class PriceInput(forms.TextInput):
         return value
 
     def render(self, name, value, attrs=None, renderer=None):
+        value = self._format_value(value)
         widget = super(PriceInput, self).render(name, value, attrs=attrs)
         return render_to_string(self.template, {'widget': widget,
                                                 'value': value,
